@@ -1,10 +1,14 @@
+import os 
+from dotenv import load_dotenv
 from flask import Flask, render_template, request, session, redirect, url_for
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
 
+load_dotenv
+
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "shsaashdasdasd"
+app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
 #store room info: codes, people messages
@@ -112,15 +116,13 @@ def connect(auth):
         leave_room(room)
         return 
 
-    if name not in rooms[room]["names"]:
-        join_room(room)
-        send({"name": name, "message": "has entered the room"}, to=room)
-        rooms[room]["members"] +=1
-        rooms[room]["names"].append(name)
-        print(f"{name} joined room {room}")
-    else:
-        print(f"{name} tried to join room {room} again")
-        return redirect(url_for("home"))
+    
+    join_room(room)
+    send({"name": name, "message": "has entered the room"}, to=room)
+    rooms[room]["members"] +=1
+    rooms[room]["names"].append(name)
+    print(f"{name} joined room {room}")
+
 
 
 @socketio.on("disconnect")
@@ -130,7 +132,6 @@ def disconnect():
     print(name)
     leave_room(room)
 
-    session["name"] = name
 
     if room in rooms:
         rooms[room]["members"] -= 1
@@ -140,8 +141,7 @@ def disconnect():
     send({"name": name, "message": "has left the room"}, to=room)
     print(f"{name} has left the room {room}")
 
-    
-
+    return redirect(url_for("home"))
 
 
 
@@ -149,6 +149,3 @@ def disconnect():
 if __name__ == "__main__":
     socketio.run(app, debug=True)
 
-
-
-#49:00
