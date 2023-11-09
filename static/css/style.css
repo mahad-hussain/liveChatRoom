@@ -1,11 +1,6 @@
 /* Styling for home */
-
 body {
-    background-color: seagreen;
-}
-
-.header_margin {
-    margin-top: 150px;
+    background-color: white;
 }
 
 .content {
@@ -13,55 +8,137 @@ body {
     align-items: center;
     justify-content: center;
 }
-
-#main_header {
-    color: black;
-    font-size: 50px;
-}
-
-.btns_content{
-    margin-top: 20px;
-    gap: 10px;
-}
-
-.btns_content h3{ 
-    text-align: center;
-    flex-direction: column;
-
-}
-
-#content_container {
-    background-color: rgb(72, 170, 226);
-    border: 2px solid;
-    border-radius: 10px;
-    padding: 50px;
-}
-
-
 .buttons{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    padding: 15px;
-    margin-bottom: 50px;
+    gap: 30px;
+    border: 2px solid red;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: whitesmoke;
+}
 
+.buttons h3{
+    color: black;
+    font-size: 25px;
+    margin: 0 auto;
+    padding: 0 auto;
+    box-sizing: border-box;
+}
 
+#main_header {
+    color: red;
+    font-size: 50px;
 }
 
 
+.name_content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 55%;
+}
 
 .join {
     display: flex;
+    justify-content: center;
     flex-direction: row;
     width: 100%;
 }
 
-.create-btn {
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.popup-content {
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #ccc;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+
+#name_lbl {
+    font-family: 'Anton', sans-serif;
+    color: red;
+    padding: 10px;
+    text-align: center;
+}
+
+#name_inp {
+    text-align: center;
+    width: 97%;
+    height: 35px;
+    border: 2px solid red; 
+    border-radius: 10px;
 
 }
+
+
+#join_inp {
+    text-align: center;
+}
+
+.join-btn{
+
+    width: 55%;
+    height: 45px;
+    color: red;
+    padding: 10px;
+    font-family: 'Anton', sans-serif;
+    border-color: red;
+    background-color: white;
+    border-radius: 10px;
+
+
+
+    &:hover {
+        background-color: red; /* Change the background color to red on hover */
+        color: white; /* Change the text color to white on hover */
+    }
+
+}
+
+.create-btn {
+    width: 55%;
+    height: 45px; /* Set a specific height to make the button taller */
+    color: red;
+    font-family: 'Anton', sans-serif;
+    border-color: red;
+    background-color: white;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: red; /* Change the background color to red on hover */
+        color: white; /* Change the text color to white on hover */
+    }
+}
+
 
 
 
@@ -78,40 +155,39 @@ body {
     flex-direction: column;
     width: 80vw;
     align-items: stretch;
-}
+  }
+  
 
 .messages {
-    overflow-y: scroll;
-    flex: 1;
-    width: 100%;
+overflow-y: scroll;
+flex: 1;
+width: 100%;
 }
 
 .inputs {
-    padding: 10px;
-    display: flex;
-
+padding: 10px;
+display: flex;
 }
 
 h2{
-    text-align: center;
-
+text-align: center;
 }
 
-
 #message {
-    flex: 1;
+flex: 1;
 }
 
 .text {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 10px;
-    padding-right: 10px;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+padding-left: 10px;
+padding-right: 10px;
 }
 
+
 .muted {
-    font-size: 10px;
-    color: darkgray;
+font-size: 10px;
+color: darkgray;
 }

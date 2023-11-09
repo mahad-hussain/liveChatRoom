@@ -1,28 +1,59 @@
 {% extends 'base.html' %}
 {% block content %} 
+<form method="post" class="buttons">
+    <h1 id="main_header"> Ephemeral Chat Lite*</h1>
 
-<div id="content_container">
-    <form method="post" class="buttons">
-        <h1 id="main_header"> Ephemeral Chat Lite*</h1>
-        <div class="btns_content">
-            <h3>Enter The Chat Room:</h3>
-            <div>
-                <label for="">Name:</label>
-                <input type="text" placeholder="Pick a name!" name="name" value="{{name}}">
-                <!-- we use value to pass into this template the name the user has passed in previously (incase of mistake)-->
+    <h3>Enter The Chat Room: </h3>
+    <div class="name_content">
+        <label for="" id="name_lbl">Name:</label>
+        <input type="text" placeholder="Pick a name!" name="name" value="{{name}}" id="name_inp">
+        <!-- we use value to pass into this template the name the user has passed in previously (incase of mistake)-->
+    </div>
+    <div class="join">
+        <!--input type="text" placeholder="Room Code" name="code" value="{{code}}" id="join_inp" -->
+        <button type="button" name="join" class="join-btn" onclick="joinRoom()">Join a Room</button>
+       
+        <div id="popup" class="popup">
+            <div class="popup-content">
+                <span class="close" id="closePopupButton">&times;</span>
+                <p>Enter The Room Code:</p>
+                <input type="text" placeholder="Room Code" name="code" value="{{code}}" id="join_inp">
+                <button type="submit" id="submitJoin">Lets go!</button>
             </div>
-
-            <div class="join">
-                <input type="text" placeholder="Room Code" name="code" value="{{code}}">
-                <button type="submit" name="join">Join a Room</button>
-            </div>
-            <button type="submit" name="create" class="create-btn"> Create a Room</button>
-            {% if error%}
-            <ul>
-                <li>{{error}}</li>
-            </ul>
-            {% endif %}
         </div>
-    </form>
-</div>
+    </div>
+
+
+    <button type="submit" name="create" class="create-btn"> Create a Room</button>
+    {% if error%}
+    <ul>
+        <li>{{error}}</li>
+    </ul>
+    {% endif %}
+</form>
+
+<script type="text/javascript"> 
+
+    function joinRoom(){
+   
+    document.getElementById("popup").style.display = "block";
+ 
+
+    document.getElementById("closePopupButton").addEventListener("click", function() {
+        document.getElementById("popup").style.display = "none";
+    });
+
+    document.getElementById("submitJoin").addEventListener("click", function() {
+        // Handle the submission of the room code input
+        var roomCode = document.getElementById("join_inp").value;
+        // You can perform further actions here, e.g., validate the code and redirect the user.
+        console.log("Entered Room Code: " + roomCode);
+        // Close the pop-up
+        document.getElementById("popup").style.display = "none";
+    });
+    };
+
+</script>
+
+
 {% endblock %}

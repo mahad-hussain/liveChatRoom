@@ -47,8 +47,10 @@ def home():
             return render_template("home.html", error="Please enter a name.", code= code, name = name)
         
         #displays error if joining without code
+        
         if join != False and not code:
             return render_template("home.html", error="Please enter a room code.", code= code, name = name)
+        
         
         #create room
         room = code
@@ -57,6 +59,7 @@ def home():
             rooms[room] = {"members" : 0, "names": [], "messages": []}
         
         #when code given is not valid
+        
         elif code not in rooms:
             return render_template("home.html", error="Room does not exist.", code= code, name = name)
 
