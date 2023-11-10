@@ -1,5 +1,6 @@
 import os
 from flask import Flask, render_template, request, session, redirect, url_for
+from gevent.pywsgi import WSGIServer
 from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
@@ -148,5 +149,7 @@ def disconnect():
 
 
 if __name__ == "__main__":
+    http_server = WSGIServer(('', 5000), app)
+    http_server.serve_forever()
     socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
 
