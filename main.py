@@ -5,10 +5,9 @@ from flask_socketio import join_room, leave_room, send, SocketIO
 import random
 from string import ascii_uppercase
 
-load_dotenv
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
+app.config["SECRET_KEY"] = "shsaashdasdasd"
 socketio = SocketIO(app)
 
 #store room info: codes, people messages
