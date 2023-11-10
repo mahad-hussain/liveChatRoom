@@ -7,7 +7,7 @@ from string import ascii_uppercase
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "shsaashdasdasd"
+app.config["SECRET_KEY"] = ""
 socketio = SocketIO(app)
 
 #store room info: codes, people messages
